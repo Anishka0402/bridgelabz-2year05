@@ -1,0 +1,5 @@
+package com.college.lambda;
+
+public interface LightBehavior {
+	void activate();
+	}

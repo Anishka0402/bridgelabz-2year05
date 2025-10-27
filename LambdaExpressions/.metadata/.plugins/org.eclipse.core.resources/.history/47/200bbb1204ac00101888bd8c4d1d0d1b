@@ -1,0 +1,8 @@
+package com.college.lambda.Ecommerce;
+import java.util.List;
+@FunctionalInterface
+public interface ProductSorter {
+	    void sort(List<Product> products);
+	}
+
+
