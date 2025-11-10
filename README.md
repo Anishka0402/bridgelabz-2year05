@@ -12,13 +12,13 @@ pacakge
 
 | Branch Name | Description |
 |--------------|-------------|
-| java-core | Covers Java fundamentals — syntax, data types, loops, arrays,strings and basic logic building |
-| java-oops | Focuses on Object-Oriented Programming concepts — classes, inheritance, polymorphism, abstraction, encapsulation |
-| packages-in-java | Explains how to organize Java code using packages and imports |
-| wrapper-class | Demonstrates Wrapper Classes, Autoboxing, and Unboxing |
-| functional-interface | Covers Functional Interfaces, Default/Static methods, and Lambda usage |
-| error-and-exception | Focuses on Exception Handling, including custom and built-in exceptions |
-| lambda-expression | Demonstrates real-world examples using Lambda Expressions and functional-style coding |
+| core_java | Covers Java fundamentals — syntax, data types, loops, arrays,strings and basic logic building |
+| oops | Focuses on Object-Oriented Programming concepts — classes, inheritance, polymorphism, abstraction, encapsulation |
+| packages| Explains how to organize Java code using packages and imports |
+| wrapperclass | Demonstrates Wrapper Classes, Autoboxing, and Unboxing |
+| interface | Covers Functional Interfaces, Default/Static methods, and Lambda usage |
+| exception | Focuses on Exception Handling, including custom and built-in exceptions |
+| lambda | Demonstrates real-world examples using Lambda Expressions and functional-style coding |
 
 
 
