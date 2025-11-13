@@ -1,0 +1,15 @@
+package Student.com.jdbc.student;
+
+
+	import java.util.List;
+
+	public interface Istudent {
+	    void insertStudent(Student s);
+	    void insertMultiple(List<Student> list);
+	    void updateStudent(Student s);
+	    void updateMultiple(List<Student> list);
+	    void deleteStudent(int id);
+	    void deleteMultiple(List<Integer> ids);
+	    void showStudents();
+	}
+

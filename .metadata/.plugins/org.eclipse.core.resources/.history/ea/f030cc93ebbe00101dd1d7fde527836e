@@ -1,0 +1,62 @@
+package Student.com.jdbc.student;
+
+import java.util.Scanner;
+
+import java.sql.Date;
+public class Menu implements IMenu {
+
+    Istudent obj = new StudentImpl();
+    Scanner sc = new Scanner(System.in);
+
+    @Override
+    public void menu() {
+        while(true){
+            System.out.println("\nStudent Database Menu");
+            System.out.println("1. Insert a Student");
+            System.out.println("2. Show Students");
+            System.out.println("3. Exit");
+
+            System.out.print("Enter choice: ");
+            int ch = sc.nextInt();
+e
+            switch(ch){
+                case 1:switch(ch){
+                case 1:
+                	System.out.println("Enter id ");
+                	int id=sc.nextInt();
+                	
+                    System.out.print("Enter Name: ");
+                    String name = sc.next();
+
+                    System.out.print("Enter Age: ");
+                    int age = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Email: ");
+                    String email = sc.nextLine();
+
+                    System.out.print("Enter Enrolled Date (YYYY-MM-DD): ");
+                    String dateStr = sc.nextLine();
+                    Date enrolledDate = Date.valueOf(dateStr);
+
+                    
+                    Student s = new Student(id, name, age, email, enrolledDate);
+                    obj.insertStudent(s);
+                    break;
+
+                case 2:
+                	
+                    obj.showStudents(); 
+                    break;
+
+                case 3:
+                    System.out.println("Exiting...");
+                    return;
+
+                default:
+                    System.out.println("Invalid Choice!");
+            }
+        }
+    }
+    }
+}

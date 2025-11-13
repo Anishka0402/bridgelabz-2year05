@@ -1,0 +1,86 @@
+package Student.com.jdbc.student;
+
+
+	import java.sql.*;
+	import java.util.List;
+
+	public class StudentImpl implements Istudent {
+
+	    IConnection conObj = new ConnectionImpl();
+
+	    @Override
+	    public void insertStudent(Student s) {
+	        try(Connection con = conObj.getConnection()){
+	            PreparedStatement ps = con.prepareStatement("INSERT INTO students(id,name,age,email,enrolled_date) VALUES (?,?,?,?,?)");
+	            ps.setInt(1, s.getId());
+	            ps.setString(2, s.getName());
+	            ps.setInt(3, s.getAge());
+	            ps.setString(4, s.getEmail());
+	            ps.setDate(5, getDate());
+	            ps.executeUpdate();
+	            
+	        } catch(Exception e) { System.out.println(e); }
+	    }
+
+	    private Date getDate() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+	    public void insertMultiple(List<Student> list) {
+	        for(Student s : list)
+	            insertStudent(s);
+	    }
+
+	    @Override
+	    public void updateStudent(Student s) {
+	        try(Connection con = conObj.getConnection()){
+	            PreparedStatement ps = con.prepareStatement("UPDATE students SET name=?, age=?, email=?, enrolled_date=? WHERE id=?");
+	            ps.setString(1, s.getName());
+	            ps.setInt(2, s.getAge());
+	            ps.setInt(3, s.getId());
+	            ps.setString(4, s.getEmail());
+	            ps.setDate(4, getDate());
+	            ps.executeUpdate();
+	        } catch(Exception e) { System.out.println(e); }
+	    }
+
+	    @Override
+	    public void updateMultiple(List<Student> list) {
+	        for(Student s : list)
+	            updateStudent(s);
+	    }
+
+	    @Override
+	    public void deleteStudent(int id) {
+	        try(Connection con = conObj.getConnection()){
+	            PreparedStatement ps = con.prepareStatement("DELETE FROM students WHERE id=?");
+	            ps.setInt(1, id);
+	            ps.executeUpdate();
+	        } catch(Exception e) { System.out.println(e); }
+	    }
+
+	    @Override
+	    public void deleteMultiple(List<Integer> ids) {
+	        for(int id : ids)
+	            deleteStudent(id);
+	    }
+
+	    @Override
+	    public void showStudents() {
+	        try(Connection con = conObj.getConnection()){
+	            Statement st = con.createStatement();
+	            ResultSet rs = st.executeQuery("SELECT * FROM students");
+	            System.out.println("\nID\tName\tAge\tEmail");
+	            while (rs.next()) {
+	                System.out.printf("%d\t%s\t%d\t%s\n",
+	                        rs.getInt("id"), rs.getString("name"),
+	                        rs.getInt("age"), rs.getString("email"));
+	                }
+	        } catch(Exception e) { System.out.println(e); }
+			
+	    }
+	}
+
+

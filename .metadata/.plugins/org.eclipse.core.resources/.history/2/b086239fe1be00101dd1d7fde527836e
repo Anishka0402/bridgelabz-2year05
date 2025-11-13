@@ -1,0 +1,131 @@
+package Student.com.jdbc.student;
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+public class Menu implements IMenu {
+	Istudent obj = new StudentImpl();
+	Scanner sc = new Scanner(System.in);
+	@Override
+	public void menu() {
+		Connection con = conObj.getConnection()
+				{
+            PreparedStatement ps = con.prepareStatement("INSERT INTO students VALUES (?,?,?)");
+		while (true) {
+			
+	            System.out.println("\n--- Student Menu ---");
+	            System.out.println("1. Insert Student");
+	            System.out.println("2. Display Students");
+	            System.out.println("3. Update Student Email");
+	            System.out.println("4. Delete Student");
+	            System.out.println("5. Exit");
+	            System.out.print("Choose Option: ");
+	            int ch = sc.nextInt();
+	            sc.nextLine();
+
+	            switch (ch) {
+
+	                case 1:
+	                    try {
+	                    	System.out.print("Enter Id: ");
+	                        int id = sc.nextInt();
+
+	                        System.out.print("Enter Name: ");
+	                        String name = sc.nextLine();
+
+	                        System.out.print("Enter Age: ");
+	                        int age = sc.nextInt();
+	                        sc.nextLine();
+
+	                        System.out.print("Enter Email: ");
+	                        String email = sc.nextLine();
+
+	                        System.out.print("Enter Enrolled Date (YYYY-MM-DD): ");
+	                        String dateStr = sc.nextLine();
+	                        java.sql.Date enrolledDate = java.sql.Date.valueOf(dateStr);
+
+	                        String query = "INSERT INTO student(id, name, age, email, enrolled_date) VALUES (?, ?, ?, ?, ?)";
+	                        PreparedStatement pst=con.prepareStatement(query);
+
+	                        pst.setString(1, name);
+	                        pst.setInt(2, age);
+	                        pst.setString(3, email);
+	                        pst.setDate(4, enrolledDate);
+
+	                        pst.executeUpdate();
+	                        System.out.println("✅ Student Inserted Successfully!");
+	                    } catch (Exception e) {
+	                        System.out.println(e);
+	                    }
+	                    break;
+
+	                case 2:
+	                    try {
+	                        Statement st = con.createStatement();
+	                        ResultSet rs = st.executeUpdate("SELECT * FROM student");
+
+	                        System.out.println("\nID | Name | Age | Email | Enrolled Date");
+	                        System.out.println("------------------------------------------");
+
+	                        while (rs.next()) {
+	                            System.out.println(rs.getInt("id") + " | " +
+	                                    rs.getString("name") + " | " +
+	                                    rs.getInt("age") + " | " +
+	                                    rs.getString("email") + " | " +
+	                                    rs.getDate("enrolled_date"));
+	                        }
+	                    } catch (Exception e) {
+	                        System.out.println(e);
+	                    }
+	                    break;
+
+	                case 3:
+	                    try {
+	                        System.out.print("Enter Student ID to Update Email: ");
+	                        int id = sc.nextInt();
+	                        sc.nextLine();
+
+	                        System.out.print("Enter New Email: ");
+	                        String newEmail = sc.nextLine();
+
+	                        String query = "UPDATE student SET email=? WHERE id=?";
+	                        PreparedStatement pst = con.prepareStatement(query);
+	                        pst.setString(1, newEmail);
+	                        pst.setInt(2, id);
+
+	                        pst.executeUpdate();
+	                        System.out.println("✅ Email Updated Successfully!");
+	                    } catch (Exception e) {
+	                        System.out.println(e);
+	                    }
+	                    break;
+
+	                case 4:
+	                    try {
+	                        System.out.print("Enter Student ID to Delete: ");
+	                        int id = sc.nextInt();
+
+	                        String query = "DELETE FROM student WHERE id=?";
+	                        PreparedStatement pst = con.prepareStatement(query);
+	                        pst.setInt(1, id);
+
+	                        pst.executeUpdate();
+	                        System.out.println("✅ Student Deleted Successfully!");
+	                    } catch (Exception e) {
+	                        System.out.println(e);
+	                    }
+	                    break;
+
+	                case 5:
+	                    System.out.println("Exiting...");
+	                    System.exit(0);
+	                    break;
+
+	                default:
+	                    System.out.println("Invalid Choice!");
+	            }
+	        }
+	    }
+	}
