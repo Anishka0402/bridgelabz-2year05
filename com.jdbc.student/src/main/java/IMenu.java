@@ -1,4 +1,4 @@
-package Student.com.jdbc.student;
+
 
 
 	public interface IMenu {

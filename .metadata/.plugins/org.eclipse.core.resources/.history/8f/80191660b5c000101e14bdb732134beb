@@ -1,0 +1,14 @@
+
+
+
+	import java.util.List;
+	// In Istudent.java
+	public interface Istudent {
+	    void insertStudent(Student s);
+	    void insertMultipleStudents(List<Student> students);
+	    void showStudents();
+	    void deleteMultipleStudents(List<Integer> ids);
+	    void updateMultipleStudents(List<Student> students);
+	}
+
+

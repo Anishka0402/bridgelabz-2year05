@@ -1,4 +1,4 @@
-package Student.com.jdbc.student;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 

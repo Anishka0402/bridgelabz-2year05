@@ -1,4 +1,4 @@
-package Student.com.jdbc.student;
+
 
 /**
  * Hello world!
