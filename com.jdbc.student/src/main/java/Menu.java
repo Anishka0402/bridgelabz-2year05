@@ -46,7 +46,7 @@ public class Menu implements IMenu {
                     return;
 
                 default:
-                    System.out.println("❌ Invalid Choice! Try again.");
+                    System.out.println(" Invalid Choice! Try again.");
             }
         }
     }
@@ -74,7 +74,7 @@ public class Menu implements IMenu {
 
         Student s = new Student(id, name, age, email, enrolledDate);
         obj.insertStudent(s);
-        System.out.println("✅ 1 row inserted successfully!");
+        System.out.println("1 row inserted successfully!");
     }
 
     private void insertMultipleStudents() {
@@ -109,7 +109,7 @@ public class Menu implements IMenu {
         }
 
         obj.insertMultipleStudents(students);
-        System.out.println("✅ " + n + " rows inserted successfully!");
+        System.out.println(n + " rows inserted successfully!");
     }
 
     private void deleteMultipleStudents() {
@@ -126,7 +126,7 @@ public class Menu implements IMenu {
         }
 
         obj.deleteMultipleStudents(ids);
-        System.out.println("🗑️ " + n + " records deleted successfully!");
+        System.out.println(n + " records deleted successfully!");
     }
 
     private void updateMultipleStudents() {
@@ -161,6 +161,6 @@ public class Menu implements IMenu {
         }
 
         obj.updateMultipleStudents(studentsToUpdate);
-        System.out.println("✅ " + n + " records updated successfully!");
+        System.out.println(n + " records updated successfully!");
     }
 }
